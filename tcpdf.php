@@ -18228,12 +18228,17 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 						if (!isset($dom[$trid]['starty'])) {
 							$dom[$trid]['starty'] = $this->y;
 						} else {
-							$parentStyle = $dom[$dom[$key]['parent']]['style'];
-							if (isset($parentStyle['vertical-align']) &&
-							$parentStyle['vertical-align'] == 'bottom') {
-								$this->y = $dom[$trid]['endy'] - 7;
-								if ($this->getNumPages() > $dom[$trid]['startpage']) {
-									$this->setPage($dom[$trid]['startpage'] + 1);
+							if (isset($dom[$dom[$key]['parent']]['style'])) {
+								$parentStyle = $dom[$dom[$key]['parent']]['style'];
+								if (isset($parentStyle['vertical-align']) &&
+								$parentStyle['vertical-align'] == 'bottom') {
+									$this->y = $dom[$trid]['endy'] - 7;
+									if ($this->getNumPages() > $dom[$trid]['startpage']) {
+										$this->setPage($dom[$trid]['startpage'] + 1);
+									}
+								}
+								else {
+									$this->y = $dom[$trid]['starty'];
 								}
 							} else {
 								$this->y = $dom[$trid]['starty'];
