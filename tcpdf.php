@@ -18231,8 +18231,8 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 							if (isset($dom[$dom[$key]['parent']]['style'])) {
 								$parentStyle = $dom[$dom[$key]['parent']]['style'];
 								if (isset($parentStyle['vertical-align']) &&
-								$parentStyle['vertical-align'] == 'bottom') {
-									$this->y = $dom[$trid]['endy'] - 7;
+									$parentStyle['vertical-align'] == 'bottom') {
+									$this->y = $dom[$trid]['endy'] - $this->getCellHeight($this->FontSize);
 									if ($this->getNumPages() > $dom[$trid]['startpage']) {
 										$this->setPage($dom[$trid]['startpage'] + 1);
 									}
