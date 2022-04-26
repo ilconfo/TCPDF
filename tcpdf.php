@@ -18234,7 +18234,12 @@ Putting 1 is equivalent to putting 0 and calling Ln() just after. Default value:
 									$parentStyle['vertical-align'] == 'bottom') {
 									$this->y = $dom[$trid]['endy'] - $this->getCellHeight($this->FontSize);
 									if ($this->getNumPages() > $dom[$trid]['startpage']) {
-										$this->setPage($dom[$trid]['startpage'] + 1);
+                                        // questo provoca problemi sulle celle iniziali, se sforano la pagina
+										// $this->setPage($dom[$trid]['startpage'] + 1);
+
+                                        // se si passa alla pagina successiva per ora lascio stare il 
+                                        // vertical-align
+                                        $this->y = $dom[$trid]['starty'];
 									}
 								}
 								else {
